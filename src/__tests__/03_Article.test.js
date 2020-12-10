@@ -27,37 +27,34 @@ describe('an article', () => {
     expect(article.body).toEqual(body)
   })
 
-  it('returns the number of words in the articles body', () => {
-    expect(article.wordCount()).toEqual(4)
+  describe("#wordCount", () => {
+    it('returns the number of words in the articles body', () => {
+      expect(article.wordCount()).toEqual(4)
+    })
   })
 
-  it('has a description that includes the author name', () => {
-    expect(article.description()).toMatch(author.fullName())
+  describe("#description", () => {
+    it('returns description that includes the author name', () => {
+      expect(article.description()).toMatch(author.fullName())
+    })
+  
+    it('returns description that includes the title', () => {
+      expect(article.description()).toMatch(article.title)
+    })
   })
 
-  it('has a description that includes the title', () => {
-    expect(article.description()).toMatch(article.title)
-  })
 
   it('starts with an empty list of comments', () => {
     expect(article.comments.length).toEqual(0)
   })
 
-  it('has a way to add a comment to the article', () => {
-    const comment = new Comment('I am so smart', author)
-    article.addComment(comment)
-    expect(article.comments.length).toEqual(1)
-    // expect(article.comments).toEqual([comment])
-  })
-
-  it('has a comment count', () => {
-    const comment = new Comment('I am so smart', author)
-    const comment2 = new Comment('Boom', author)
-
-    article.addComment(comment)
-    article.addComment(comment2)
-
-    expect(article.commentCount()).toEqual(2)
+  describe("#addComment", () => {
+    it('adds a comment to the article\s list of comments', () => {
+      const comment = new Comment('I am so smart', author)
+      article.addComment(comment)
+      expect(article.comments.length).toEqual(1)
+      expect(article.comments).toEqual([comment])
+    })
   })
 
   describe('#formattedString', () => {
@@ -86,7 +83,7 @@ describe('an article', () => {
   })
 
   describe('#commentsMentioning', () => {
-    it('provides a list of comments containing a certain phrase', () => {
+    it('returns a list of comments whose body contains a provided phrase', () => {
       article.addComment(new Comment('Spaceforce!', author))
       article.addComment(new Comment('Regular Comment', author))
       article.addComment(new Comment('I want to join spaceforce', author))
