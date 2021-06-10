@@ -1,5 +1,3 @@
-class Comment {
-
-}
+class Comment {}
 
 export default Comment

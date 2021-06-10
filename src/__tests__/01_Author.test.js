@@ -1,6 +1,6 @@
 import Author from '../Author.js'
 
-fdescribe('Author', () => {
+describe('Author', () => {
   let author
   beforeEach(() => {
     author = new Author('Terry', 'Pratchett')

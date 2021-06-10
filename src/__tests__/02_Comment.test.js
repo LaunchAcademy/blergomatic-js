@@ -19,4 +19,37 @@ describe('a comment', () => {
   it('has an author', () => {
     expect(comment.author).toEqual(author)
   })
+
+  it('has an upvote count that starts at zero', () => {
+    expect(comment.upvotes).toEqual(0)
+  })
+
+  it('has an downvote count that starts at zero', () => {
+    expect(comment.author).toEqual(0)
+  })
+
+  describe("#upvote", () => {
+    it("updates and returns the current upvote count", () => {
+      comment.upvote()
+      comment.upvote()
+      expect(comment.upvotes).toEqual(2)
+    })
+  })
+  
+  describe("#downvote", () => {
+    it("updates and returns the current downvote count", () => {
+      comment.downvote()
+      comment.downvote()
+      expect(comment.downvotes).toEqual(2)
+    })
+  })
+
+  describe("#voteSummary", () => {
+    it("returns the upvotes minus the downvotes", () => {
+      comment.upvote()
+      comment.upvote()
+      comment.downvote()
+      expect(comment.downvotes).toEqual(1)
+    })
+  })
 })

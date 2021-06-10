@@ -57,6 +57,7 @@ describe("an article", () => {
   })
 
   describe("#formattedString", () => {
+    // returns a string with the title, author's full name, number of comments and body of the article
     beforeEach(() => {
       let comment = new Comment("Awesome!", author)
       article.addComment(comment)
