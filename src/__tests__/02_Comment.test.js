@@ -25,7 +25,7 @@ describe('a comment', () => {
   })
 
   it('has an downvote count that starts at zero', () => {
-    expect(comment.author).toEqual(0)
+    expect(comment.downvotes).toEqual(0)
   })
 
   describe("#upvote", () => {
@@ -44,12 +44,14 @@ describe('a comment', () => {
     })
   })
 
+  // potentially update for return, or only check property
+
   describe("#voteSummary", () => {
     it("returns the upvotes minus the downvotes", () => {
       comment.upvote()
       comment.upvote()
       comment.downvote()
-      expect(comment.downvotes).toEqual(1)
+      expect(comment.voteSummary()).toEqual(1)
     })
   })
 })

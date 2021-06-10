@@ -28,7 +28,7 @@ describe("an article", () => {
   })
 
   describe("#wordCount", () => {
-    it("returns the number of words in the articles body", () => {
+    it("returns the number of words in the article's body", () => {
       expect(article.wordCount()).toEqual(4)
     })
   })
@@ -48,7 +48,7 @@ describe("an article", () => {
   })
 
   describe("#addComment", () => {
-    it("adds a comment to the articles list of comments", () => {
+    it.only("adds a comment to the articles list of comments", () => {
       const comment = new Comment("I am so smart", author)
       article.addComment(comment)
       expect(article.comments.length).toEqual(1)
@@ -83,7 +83,7 @@ describe("an article", () => {
   })
 
   describe("#commentsMentioning", () => {
-    it("returns a list of comments whose body contains a provided phrase", () => {
+    it.only("returns a list of comments whose body contains a provided phrase", () => {
       article.addComment(new Comment("Spaceforce!", author))
       article.addComment(new Comment("Regular Comment", author))
       article.addComment(new Comment("I want to join spaceforce", author))
