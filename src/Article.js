@@ -19,6 +19,20 @@ class Article {
   addComment(newComment) {
     this.comments.push(newComment)
   }
+
+  formattedString() {
+    return `Description: ${this.description()}, # Comments: ${this.comments.length}, Body: ${this.body}`
+  }
+
+  commentsMentioning(wordToCheck) {
+    let list = []
+    this.comments.forEach((comment) => {
+      if (comment.body.toLowerCase().includes(wordToCheck)) {
+        list.push(comment)
+      }
+    })
+    return list
+  }
 }
 
 export default Article
