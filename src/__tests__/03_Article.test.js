@@ -27,6 +27,10 @@ describe("an article", () => {
     expect(article.body).toEqual(body)
   })
 
+  it("starts with an empty list of comments", () => {
+    expect(article.comments.length).toEqual(0)
+  })
+
   describe("#wordCount", () => {
     it("returns the number of words in the articles body", () => {
       expect(article.wordCount()).toEqual(4)
@@ -41,10 +45,6 @@ describe("an article", () => {
     it("returns description that includes the title", () => {
       expect(article.description()).toMatch(article.title)
     })
-  })
-
-  it("starts with an empty list of comments", () => {
-    expect(article.comments.length).toEqual(0)
   })
 
   describe("#addComment", () => {
