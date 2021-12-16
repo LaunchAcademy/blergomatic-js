@@ -24,6 +24,10 @@ describe('a comment', () => {
     expect(comment.upvotes).toEqual(0)
   })
 
+  it('has an downvote count that starts at zero', () => {
+    expect(comment.downvotes).toEqual(0)
+  })
+
   describe("#upvote", () => {
     it("increases the upvote count by 1", () => {
       comment.upvote()
@@ -33,7 +37,7 @@ describe('a comment', () => {
   })
   
   describe("#downvote", () => {
-    it("increases the dowvote count by 1", () => {
+    it("increases the downvote count by 1", () => {
       comment.downvote()
       comment.downvote()
       expect(comment.downvotes).toEqual(2)
