@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "./node_modules/.bin/jest",
-    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand",
+    "test:debug:pc": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand",
     "test:debug:mac": "node --inspect-brk ./node_modules/.bin/jest --runInBand"
   },
   "dependencies": {

@@ -27,63 +27,73 @@ describe("an article", () => {
     expect(article.body).toEqual(body)
   })
 
+  it("has a word count", () => {
+    expect(article.wordCount()).toEqual(4)
+  })
+
+  it("has a description that includes the author name", () => {
+    expect(article.description()).toContain(author.fullName())
+  })
+
+  it("has a description that includes the title", () => {
+    expect(article.description()).toContain(article.title)
+  })
+
   it("starts with an empty list of comments", () => {
     expect(article.comments.length).toEqual(0)
   })
 
-  describe("#wordCount", () => {
-    it("returns the number of words in the articles body", () => {
-      expect(article.wordCount()).toEqual(4)
-    })
+  it("has a way to add a comment to the article", () => {
+    const comment = new Comment("I am so smart", author)
+    article.addComment(comment)
+    expect(article.comments.length).toEqual(1)
+    // expect(article.comments).toEqual([comment])
   })
 
-  describe("#description", () => {
-    it("returns description that includes the author name", () => {
-      expect(article.description()).toMatch(author.fullName())
-    })
+  it("has a comment count", () => {
+    const comment = new Comment("I am so smart", author)
+    const comment2 = new Comment("Boom", author)
 
-    it("returns description that includes the title", () => {
-      expect(article.description()).toMatch(article.title)
-    })
-  })
+    article.addComment(comment)
+    article.addComment(comment2)
 
-  describe("#addComment", () => {
-    it("adds a comment to the articles list of comments", () => {
-      const comment = new Comment("I am so smart", author)
-      article.addComment(comment)
-      expect(article.comments.length).toEqual(1)
-      expect(article.comments).toEqual([comment])
-    })
+    expect(article.commentCount()).toEqual(2)
   })
 
   describe("#formattedString", () => {
-    // returns a string with the title, author's full name, number of comments and body of the article
     beforeEach(() => {
       let comment = new Comment("Awesome!", author)
+      let comment2 = new Comment("One of the best things I've read!", author)
       article.addComment(comment)
+      article.addComment(comment2)
     })
 
     it("includes the title", () => {
-      expect(article.formattedString()).toMatch(article.title)
+      expect(article.formattedString()).toContain(article.title)
     })
 
     it("includes the author's full name", () => {
-      expect(article.formattedString()).toMatch(article.author.fullName())
-    })
-
-    it("includes the number of comments", () => {
-      expect(article.formattedString()).toMatch(
-        article.comments.length.toString()
-      )
+      expect(article.formattedString()).toContain(article.author.fullName())
     })
 
     it("includes the body", () => {
-      expect(article.formattedString()).toMatch(article.body)
+      expect(article.formattedString()).toContain(article.body)
+    })
+
+    it("includes the number of comments", () => {
+      expect(article.formattedString()).toContain(
+        article.commentCount().toString()
+      )
+    })
+
+    it("includes each comment", () => {
+      expect(article.formattedString()).toContain(comment.body)
+      expect(article.formattedString()).toContain(comment2.body)
     })
   })
 
   describe("#commentsMentioning", () => {
-    it("returns a list of comments whose body contains a provided phrase", () => {
+    it("provides a list of comments containing a certain phrase", () => {
       article.addComment(new Comment("Spaceforce!", author))
       article.addComment(new Comment("Regular Comment", author))
       article.addComment(new Comment("I want to join spaceforce", author))
