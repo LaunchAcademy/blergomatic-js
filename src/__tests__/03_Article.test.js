@@ -47,7 +47,7 @@ describe("an article", () => {
     const comment = new Comment("I am so smart", author)
     article.addComment(comment)
     expect(article.comments.length).toEqual(1)
-    // expect(article.comments).toEqual([comment])
+    expect(article.comments).toEqual([comment])
   })
 
   it("has a comment count", () => {
@@ -61,9 +61,12 @@ describe("an article", () => {
   })
 
   describe("#formattedString", () => {
+    let comment
+    let comment2
+
     beforeEach(() => {
-      let comment = new Comment("Awesome!", author)
-      let comment2 = new Comment("One of the best things I've read!", author)
+      comment = new Comment("Awesome!", author)
+      comment2 = new Comment("One of the best things I've read!", author)
       article.addComment(comment)
       article.addComment(comment2)
     })
