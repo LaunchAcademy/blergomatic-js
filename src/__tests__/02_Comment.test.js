@@ -12,19 +12,19 @@ describe('a comment', () => {
     comment = new Comment(body, author)
   })
 
-  it('has a body', () => {
+  it('has a body property', () => {
     expect(comment.body).toEqual(body)
   })
 
-  it('has an author', () => {
+  it('has an author property', () => {
     expect(comment.author).toEqual(author)
   })
 
-  it('has an upvote count that starts at zero', () => {
+  it('has an upvote count property that starts at zero', () => {
     expect(comment.upvotes).toEqual(0)
   })
 
-  it('has an downvote count that starts at zero', () => {
+  it('has an downvote count property that starts at zero', () => {
     expect(comment.downvotes).toEqual(0)
   })
 
@@ -44,12 +44,12 @@ describe('a comment', () => {
     })
   })
 
-  describe("#voteSummary", () => {
+  describe("#voteTotal", () => {
     it("returns the upvotes minus the downvotes", () => {
       comment.upvote()
       comment.upvote()
       comment.downvote()
-      expect(comment.voteSummary()).toEqual(1)
+      expect(comment.voteTotal()).toEqual(1)
     })
   })
 })

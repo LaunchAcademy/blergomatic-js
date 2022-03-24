@@ -9,9 +9,9 @@ describe("an article", () => {
   let body
 
   beforeEach(() => {
-    author = new Author("Roald", "Dahl")
-    body = "Something smart to say"
-    title = "Dan screwed up the test suite"
+    author = new Author("Ranni", "Melania")
+    body = "visualz, story, characters, did I mention visuals?"
+    title = "The Many Reasons Why You Should Watch 'Arcane'"
     article = new Article(author, title, body)
   })
 
@@ -49,7 +49,7 @@ describe("an article", () => {
 
   describe("#addComment", () => {
     it("adds a comment to the articles list of comments", () => {
-      const comment = new Comment("I am so smart", author)
+      const comment = new Comment("Yeah, that was a great tv show", author)
       article.addComment(comment)
       expect(article.comments.length).toEqual(1)
       expect(article.comments).toEqual([comment])

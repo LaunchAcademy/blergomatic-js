@@ -2,7 +2,10 @@ import Author from '../Author.js'
 
 describe('Author', () => {
   let author
+
+  // when does this get run?
   beforeEach(() => {
+    // when do we have access to this object?
     author = new Author('Terry', 'Pratchett')
   })
 
@@ -14,7 +17,10 @@ describe('Author', () => {
     expect(author.lastName).toEqual('Pratchett')
   })
 
-  it('has a full name', () => {
-    expect(author.fullName()).toEqual('Terry Pratchett')
+  describe("#fullName", () => {
+    it('returns the author\'s full name and last name as a string ', () => {
+      // debugger
+      expect(author.fullName()).toEqual('Terry Pratchett')
+    })
   })
 })
