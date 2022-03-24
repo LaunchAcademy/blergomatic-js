@@ -1,6 +1,21 @@
 class Comment {
   constructor(body, author) {
-    // which properties do we need to assign?
+    this.body = body 
+    this.author = author
+    this.upvotes = 0
+    this.downvotes = 0
+  }
+
+  upvote(){
+    this.upvotes++
+  }
+
+  downvote(){
+    this.downvotes++
+  }
+
+  voteTotal(){
+    return this.upvotes - this.downvotes
   }
 
 

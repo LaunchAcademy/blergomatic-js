@@ -33,7 +33,7 @@ describe("an article", () => {
 
   describe("#wordCount", () => {
     it("returns the number of words in the articles body", () => {
-      expect(article.wordCount()).toEqual(4)
+      expect(article.wordCount()).toEqual(7)
     })
   })
 

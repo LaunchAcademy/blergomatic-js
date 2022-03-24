@@ -19,7 +19,7 @@ describe('Author', () => {
 
   describe("#fullName", () => {
     it('returns the author\'s full name and last name as a string ', () => {
-      // debugger
+      debugger
       expect(author.fullName()).toEqual('Terry Pratchett')
     })
   })
