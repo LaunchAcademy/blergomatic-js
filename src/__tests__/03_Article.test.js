@@ -27,38 +27,52 @@ describe("an article", () => {
     expect(article.body).toEqual(body)
   })
 
-  it("has a word count", () => {
-    expect(article.wordCount()).toEqual(4)
+  describe("#wordCount", () => {
+    it("returns the number of words in the body", () => {
+      expect(article.wordCount()).toEqual(4)
+    })
   })
 
-  it("has a description that includes the author name", () => {
-    expect(article.description()).toContain(author.fullName())
+  // describe("#RUBRIC", () => {
+
+  // })
+  describe("#description", () => {
+    it("returns a string containing the author name", () => {
+      expect(article.description()).toContain(author.fullName())
+    })
+    
+    it("returns a string that includes the title", () => {
+      expect(article.description()).toContain(article.title)
+    })
   })
 
-  it("has a description that includes the title", () => {
-    expect(article.description()).toContain(article.title)
-  })
 
-  it("starts with an empty list of comments", () => {
-    expect(article.comments.length).toEqual(0)
-  })
+    describe("#addComment", () => {
+      it("starts with an empty list of comments", () => {
+        expect(article.comments.length).toEqual(0)
+      })
 
-  it("has a way to add a comment to the article", () => {
-    const comment = new Comment("I am so smart", author)
-    article.addComment(comment)
-    expect(article.comments.length).toEqual(1)
-    expect(article.comments).toEqual([comment])
-  })
+      it("has a way to add a comment to the article", () => {
+        const comment = new Comment("I am so smart", author)
+        article.addComment(comment)
+        expect(article.comments.length).toEqual(1)
+        expect(article.comments).toEqual([comment])
+      })
+    })
 
-  it("has a comment count", () => {
-    const comment = new Comment("I am so smart", author)
-    const comment2 = new Comment("Boom", author)
 
-    article.addComment(comment)
-    article.addComment(comment2)
+    describe("#commentCount", () => {
+      it("has a comment count", () => {
+        const comment = new Comment("I am so smart", author)
+        const comment2 = new Comment("Boom", author)
 
-    expect(article.commentCount()).toEqual(2)
-  })
+        article.addComment(comment)
+        article.addComment(comment2)
+
+        expect(article.commentCount()).toEqual(2)
+      })
+    })
+
 
   describe("#formattedString", () => {
     let comment

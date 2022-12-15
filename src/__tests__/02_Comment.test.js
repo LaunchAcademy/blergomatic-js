@@ -34,6 +34,7 @@ describe("a comment", () => {
       comment.upvote()
 
       expect(comment.upvotes).toEqual(2)
+      // expect(comment.upvote()).toEqual(true)
     })
   })
 
