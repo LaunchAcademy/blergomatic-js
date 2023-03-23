@@ -28,14 +28,15 @@ describe("Article", () => {
       expect(article.body).toEqual(body)
     })
 
-    it("starts with a comments arrays", () => {
+    it("starts with a comments array", () => {
       expect(article.comments.length).toEqual(0)
+      expect(article.comments).toEqual([])
     })
   })
 
   describe("#wordCount", () => {
     it("returns the number of words in the body of the article", () => {
-      expect(article.wordCount()).toEqual(4)
+      expect(article.wordCount()).toEqual(7)
     })
   })
 
@@ -49,7 +50,7 @@ describe("Article", () => {
     })
 
     // recently updated
-    it("returns a string containing the author's full name", () => {
+    it("returns a string containing the author's full name and the title", () => {
       expect(article.description()).toEqual("Why Ruby is still cool by Dan Pickett")
     })
     
@@ -64,17 +65,17 @@ describe("Article", () => {
     })
   })
 
-  // describe("#commentCount", () => {
-  //   it("returns the number of comments for the article", () => {
-  //     const comment = new Comment("RUBY RULEZ", author)
-  //     const comment2 = new Comment("Ruby is fine I guess", author)
+  describe("#commentCount", () => {
+    it("returns the number of comments for the article", () => {
+      const comment = new Comment("RUBY RULEZ", author)
+      const comment2 = new Comment("Ruby is fine I guess", author)
 
-  //     article.addComment(comment)
-  //     article.addComment(comment2)
+      article.addComment(comment)
+      article.addComment(comment2)
 
-  //     expect(article.commentCount()).toEqual(2)
-  //   })
-  // })
+      expect(article.commentCount()).toEqual(2)
+    })
+  })
 
   describe("#formattedString", () => {
     let comment
@@ -97,6 +98,7 @@ describe("Article", () => {
 
     it("includes the body of the article", () => {
       expect(article.formattedString()).toContain(article.body)
+      console.log(article.formattedString())
     })
 
     it("includes the number of comments", () => {
@@ -124,7 +126,6 @@ describe("Article", () => {
       article.addComment(new Comment("Regular Comment", author))
       article.addComment(new Comment("I want to join spaceforce", author))
       expect(article.commentsMentioning("spaceforce").length).toEqual(2)
-      // 
     })
   })
 })
