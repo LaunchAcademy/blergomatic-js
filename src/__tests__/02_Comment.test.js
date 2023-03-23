@@ -1,7 +1,7 @@
 import Comment from "../Comment.js"
 import Author from "../Author.js"
 
-describe("a comment", () => {
+describe("Comment", () => {
   let body
   let author
   let comment
@@ -12,29 +12,30 @@ describe("a comment", () => {
     comment = new Comment(body, author)
   })
 
-  it("has a body", () => {
-    expect(comment.body).toEqual(body)
-  })
+  describe("when initialized", () => {
+    it("has a body name property that can be accessed", () => {
+      expect(comment.body).toEqual(body)
+    })
 
-  it("has an author", () => {
-    expect(comment.author).toEqual(author)
-  })
+    it("has an author property that can be accessed and returns an author object", () => {
+      expect(comment.author).toEqual(author)
+    })
 
-  it("has an upvote count that starts at zero", () => {
-    expect(comment.upvotes).toEqual(0)
-  })
+    it("has a default upvote count that starts at zero", () => {
+      expect(comment.upvotes).toEqual(0)
+    })
 
-  it("has an downvote count that starts at zero", () => {
-    expect(comment.downvotes).toEqual(0)
+    it("has a default downvote count that starts at zero", () => {
+      expect(comment.downvotes).toEqual(0)
+    })
   })
-
+  
   describe("#upvote", () => {
     it("increases the upvote count by 1", () => {
       comment.upvote()
       comment.upvote()
 
       expect(comment.upvotes).toEqual(2)
-      // expect(comment.upvote()).toEqual(true)
     })
   })
 
@@ -47,7 +48,7 @@ describe("a comment", () => {
   })
 
   describe("#voteSummary", () => {
-    it("returns the upvotes minus the downvotes", () => {
+    it("returns the total of the upvotes minus the downvotes", () => {
       comment.upvote()
       comment.upvote()
       comment.downvote()
