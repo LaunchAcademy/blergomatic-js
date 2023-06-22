@@ -2,6 +2,7 @@ import Author from "../Author.js"
 
 describe("Author", () => {
   let author
+
   beforeEach(() => {
     author = new Author("Terry", "Pratchett")
   })
@@ -14,6 +15,7 @@ describe("Author", () => {
     expect(author.lastName).toEqual("Pratchett")
   })
 
+  // it("#fullName", () => {
   it("has a full name", () => {
     expect(author.fullName()).toEqual("Terry Pratchett")
   })

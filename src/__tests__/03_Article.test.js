@@ -40,39 +40,37 @@ describe("an article", () => {
     it("returns a string containing the author name", () => {
       expect(article.description()).toContain(author.fullName())
     })
-    
+
     it("returns a string that includes the title", () => {
       expect(article.description()).toContain(article.title)
     })
   })
 
-
-    describe("#addComment", () => {
-      it("starts with an empty list of comments", () => {
-        expect(article.comments.length).toEqual(0)
-      })
-
-      it("has a way to add a comment to the article", () => {
-        const comment = new Comment("I am so smart", author)
-        article.addComment(comment)
-        expect(article.comments.length).toEqual(1)
-        expect(article.comments).toEqual([comment])
-      })
+  describe("#addComment", () => {
+    it("starts with an empty list of comments", () => {
+      expect(article.comments.length).toEqual(0)
     })
 
-
-    describe("#commentCount", () => {
-      it("has a comment count", () => {
-        const comment = new Comment("I am so smart", author)
-        const comment2 = new Comment("Boom", author)
-
-        article.addComment(comment)
-        article.addComment(comment2)
-
-        expect(article.commentCount()).toEqual(2)
-      })
+    it("has a way to add a comment to the article", () => {
+      const comment = new Comment("I am so smart", author)
+      article.addComment(comment)
+      expect(article.comments.length).toEqual(1)
+      expect(article.comments).toEqual([comment])
+      expect(article.comments).toContain(comment)
     })
+  })
 
+  describe("#commentCount", () => {
+    it("has a comment count", () => {
+      const comment = new Comment("I am so smart", author)
+      const comment2 = new Comment("Boom", author)
+
+      article.addComment(comment)
+      article.addComment(comment2)
+
+      expect(article.commentCount()).toEqual(2)
+    })
+  })
 
   describe("#formattedString", () => {
     let comment
@@ -103,7 +101,7 @@ describe("an article", () => {
       )
     })
 
-    it("includes each comment", () => {
+    it("includes the body each comment", () => {
       expect(article.formattedString()).toContain(comment.body)
       expect(article.formattedString()).toContain(comment2.body)
     })
@@ -114,6 +112,7 @@ describe("an article", () => {
       article.addComment(new Comment("Spaceforce!", author))
       article.addComment(new Comment("Regular Comment", author))
       article.addComment(new Comment("I want to join spaceforce", author))
+
       expect(article.commentsMentioning("spaceforce").length).toEqual(2)
     })
   })
