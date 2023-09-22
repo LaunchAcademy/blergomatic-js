@@ -7,7 +7,7 @@ describe("Comment", () => {
   let comment
 
   beforeEach(() => {
-    body = "I am a troll and I am on the internet"
+    body = "I am a troll rawwwrr"
     author = new Author("RL", "Stine")
     comment = new Comment(body, author)
   })
