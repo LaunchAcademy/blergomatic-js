@@ -33,9 +33,6 @@ describe("an article", () => {
     })
   })
 
-  // describe("#RUBRIC", () => {
-
-  // })
   describe("#description", () => {
     it("returns a string containing the author name", () => {
       expect(article.description()).toContain(author.fullName())
@@ -46,33 +43,30 @@ describe("an article", () => {
     })
   })
 
-
-    describe("#addComment", () => {
-      it("starts with an empty list of comments", () => {
-        expect(article.comments.length).toEqual(0)
-      })
-
-      it("has a way to add a comment to the article", () => {
-        const comment = new Comment("I am so smart", author)
-        article.addComment(comment)
-        expect(article.comments.length).toEqual(1)
-        expect(article.comments).toEqual([comment])
-      })
+  describe("#addComment", () => {
+    it("starts with an empty list of comments", () => {
+      expect(article.comments.length).toEqual(0)
     })
 
-
-    describe("#commentCount", () => {
-      it("has a comment count", () => {
-        const comment = new Comment("I am so smart", author)
-        const comment2 = new Comment("Boom", author)
-
-        article.addComment(comment)
-        article.addComment(comment2)
-
-        expect(article.commentCount()).toEqual(2)
-      })
+    it("has a way to add a comment to the article", () => {
+      const comment = new Comment("I am so smart", author)
+      article.addComment(comment)
+      expect(article.comments.length).toEqual(1)
+      expect(article.comments).toEqual([comment])
     })
+  })
 
+  describe("#commentCount", () => {
+    it("has a comment count", () => {
+      const comment = new Comment("I am so smart", author)
+      const comment2 = new Comment("Boom", author)
+
+      article.addComment(comment)
+      article.addComment(comment2)
+
+      expect(article.commentCount()).toEqual(2)
+    })
+  })
 
   describe("#formattedString", () => {
     let comment

@@ -21,6 +21,7 @@ describe("a comment", () => {
   })
 
   it("has an upvote count that starts at zero", () => {
+    // console.log(comment)
     expect(comment.upvotes).toEqual(0)
   })
 

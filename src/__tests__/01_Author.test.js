@@ -14,7 +14,8 @@ describe("Author", () => {
     expect(author.lastName).toEqual("Pratchett")
   })
 
-  it("has a full name", () => {
+  it("#fullName", () => {
+  // it("has a full name", () => {
     expect(author.fullName()).toEqual("Terry Pratchett")
   })
 })
