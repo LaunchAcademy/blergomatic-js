@@ -2,7 +2,7 @@ class Article {
   constructor(author, title, body) {
     this.author = author 
     this.title = title 
-    this.body = body
+    this.body = body 
     this.comments = []
   }
 
@@ -14,48 +14,40 @@ class Article {
     return `${this.title} by ${this.author.fullName()}`
   }
 
-  addComment(commentObject) {
-    
-    // for(let comment of this.comments) {
-    //   if (comment.author.fullName() === commentObject.author.fullName()) {
-    //     return false 
-    //   }
-    // }
-
-    // this.comments.push(commentObject)
-    // return true 
-
+  addComment(commentObject){
     this.comments.push(commentObject)
   }
 
-  commentCount() {
+  commentCount(){
     return this.comments.length
   }
 
   formattedString() {
-    let formattedString = `${this.title} \n ${this.author.fullName()} \n ${this.body} \n # of Comments: ${this.commentCount()} \n`
+    let finalString = ""
 
-    for(let comment of this.comments) {
-      formattedString += `${comment.body} \n`
-    }
-    return formattedString
-  }
-
-  // wordString = "spaceforce"
-  commentsMentioning(wordString) {
-    // let commentsArray = []
-    // this.comments.forEach(comment => {
-    //   if (comment.body.toLowerCase().includes(wordString.toLowerCase())) {
-    //     commentsArray.push(comment)
-    //   }
-    // })
-    // return commentsArray
-
-    const commentsContaining = this.comments.filter((comment) => {
-      return comment.body.toLowerCase().includes(wordString.toLowerCase())
+    finalString += `${this.title}\n`
+    finalString += `${this.author.fullName()}\n`
+    finalString += `${this.body}\n`
+    finalString += `${this.commentCount()}\n`
+    
+    this.comments.forEach(comment => {
+      finalString += `${comment.body}\n`
     })
-    return commentsContaining
+
+    return finalString
   }
+
+  commentsMentioning(targetString) {
+    let commentArray = []
+    this.comments.forEach(commentObject => {
+      if (commentObject.body.toLowerCase().includes(targetString)) {
+        commentArray.push(commentObject)
+      }
+    })
+
+    return commentArray
+  }
+  
 }
 
 export default Article

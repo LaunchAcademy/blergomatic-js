@@ -98,7 +98,6 @@ describe("Article", () => {
 
     it("includes the body of the article", () => {
       expect(article.formattedString()).toContain(article.body)
-      console.log(article.formattedString())
     })
 
     it("includes the number of comments", () => {
@@ -107,7 +106,7 @@ describe("Article", () => {
       )
     })
 
-    it("includes each comment", () => {
+    it("includes each comment body", () => {
       expect(article.formattedString()).toContain(comment.body)
       expect(article.formattedString()).toContain(comment2.body)
     })
@@ -120,7 +119,8 @@ describe("Article", () => {
     // Ruby is fine I guess"
   })
 
-  describe("#commentsMentioning", () => {
+  describe.only("#commentsMentioning", () => {
+    // Note: you may need the lowercase method for strings
     it("returns an array of comments containing a given phrase", () => {
       article.addComment(new Comment("Spaceforce!", author))
       article.addComment(new Comment("Regular Comment", author))

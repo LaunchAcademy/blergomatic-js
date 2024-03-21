@@ -6,17 +6,22 @@ class Comment {
     this.downvotes = 0
   }
 
-  upvote() {
-    return this.upvotes++
+  upvote(){
+    // this.upvotes++
+    this.upvotes += 1
   }
 
-  downvote() {
-    return this.downvotes++
+  downvote(){
+    this.downvotes++
   }
-  
-  voteSummary() {
+
+  voteSummary(){
     return this.upvotes - this.downvotes
   }
 }
 
 export default Comment
+
+    // body = "I am a troll rawwwrr"
+    // author = new Author("RL", "Stine")
+    // comment = new Comment(body, author)
